@@ -4,4 +4,8 @@ use strict;
 use warnings;
 use NX::Deb7;
 
+# PODNAME: nx-deb7-setup-user
+# ABSTRACT: setup user environment
+# VERSION
+
 NX::Deb7->setup_user;
