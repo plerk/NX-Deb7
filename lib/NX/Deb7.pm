@@ -96,4 +96,69 @@ sub setup_user
   
 }  
 
+sub run
+{
+  say "% @_";
+  system @_;
+}
+
+sub setup_root
+{
+  my($class) = @_;
+  
+  if($>)
+  {
+    print "must be run as root";
+    exit 2;
+  }
+  
+  my $home = dir( File::HomeDir->my_home );
+  my $share = __PACKAGE__->share_dir;
+  
+  my $user = 'ollisg';
+  do {
+    my $found = 0;
+    while(my @user = getpwent)
+    {
+      $found = 1 if $user[0] eq 'ollisg';
+    }
+    unless($found)
+    {
+      run 'adduser', '--gecos' => 'Graham THE Ollis', 'ollisg';
+    }
+  };
+  
+  run 'adduser', 'ollisg', 'sudo';
+  run 'dpkg', '-i', $share->share_dir->subdir('debs')->children;
+  run 'apt-get', 'install', '-f';
+
+  copy(
+    $share->file( qw( config root.cshrc )),
+    $home->file( '.cshrc' ),
+  );
+  
+  run 'chsh', 'ollisg', '-s', '/bin/tcsh';
+  run 'chsh', 'root', '-s', '/bin/tcsh';
+}
+
+sub setup_cave
+{
+  my($class, $file) = @_;
+  
+  $file //= file( '/etc/apt/sources.list' );
+
+  unless(-w $file)
+  {
+    print "must be run as root";
+    exit 2;
+  }
+  
+  my $content = $file->slurp;
+  
+  $content =~ s{http://security\.debian\.org/}{http://apt.sydney.wdlabs.com:3142/security.debian.org/}g;
+  $content =~ s{http://ftp\...\.debian\.org/debian/}{http://apt.sydney.wdlabs.com:3142/debian/}g;
+  
+  $file->spew($content);
+}
+
 1;

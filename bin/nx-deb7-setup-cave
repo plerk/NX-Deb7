@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use NX::Deb7;
+
+# PODNAME: nx-deb7-setup-user
+# ABSTRACT: setup cave environment
+# VERSION
+
+NX::Deb7->setup_cave;
