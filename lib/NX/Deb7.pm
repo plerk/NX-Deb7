@@ -6,6 +6,7 @@ use v5.10;
 use Path::Class qw( file dir );
 use File::Copy ();
 use File::HomeDir;
+use File::ShareDir qw( dist_dir );
 
 # ABSTRACT: Graham's environment for Debian 7
 # VERSION
@@ -25,7 +26,8 @@ sub share_dir
         ->parent
         ->parent
         ->parent
-        ->subdir('share');      
+        ->subdir('share');
+        undef $path unless $path && -d $path;
     }
   
     eval { 
