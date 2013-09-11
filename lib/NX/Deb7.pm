@@ -123,7 +123,7 @@ sub setup_root
   
   if($>)
   {
-    print "must be run as root";
+    print "must be run as root\n";
     exit 2;
   }
   
@@ -164,7 +164,7 @@ sub setup_cave
 
   unless(-w $file)
   {
-    print "must be run as root";
+    print "must be run as root\n";
     exit 2;
   }
   
