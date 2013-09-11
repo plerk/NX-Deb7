@@ -144,7 +144,7 @@ sub setup_root
   };
   
   run 'adduser', 'ollisg', 'sudo';
-  run 'dpkg', '-i', $share->share_dir->subdir('debs')->children;
+  run 'dpkg', '-i', $share->subdir('debs')->children;
   run 'apt-get', 'install', '-f';
 
   copy(
