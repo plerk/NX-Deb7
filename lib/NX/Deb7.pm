@@ -29,9 +29,9 @@ sub share_dir
         ->subdir('share');
         undef $path unless $path && -d $path;
     }
-  
+
     eval { 
-      if(defined $NX::Deb7::VERSION)
+      if(defined $NX::Deb7::VERSION && ! defined $path)
       {
         $path = Path::Class::Dir
           ->new(dist_dir('NX-Deb7'));
