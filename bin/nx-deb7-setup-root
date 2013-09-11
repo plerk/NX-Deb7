@@ -8,4 +8,4 @@ use NX::Deb7;
 # ABSTRACT: setup user environment
 # VERSION
 
-NX::Deb7->setup_user;
+NX::Deb7->setup_root;
