@@ -16,6 +16,18 @@ sub share_dir
   
   unless(defined $path)
   {
+    if(defined $NX::Deb7::VERSION && $INC{'NX/Deb7.pm'} =~ /blib/)
+    {
+      $path = Path::Class::File
+        ->new($INC{'NX/Deb7.pm'})
+        ->absolute
+        ->dir
+        ->parent
+        ->parent
+        ->parent
+        ->subdir('share');      
+    }
+  
     eval { 
       if(defined $NX::Deb7::VERSION)
       {
@@ -35,6 +47,7 @@ sub share_dir
         ->parent
         ->subdir('share');
     }
+
     die 'can not find share directory' unless $path && -d $path;
   }
   
