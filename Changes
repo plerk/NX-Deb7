@@ -1,4 +1,6 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.02      2013-09-11 08:57:50 -0400
   - initial version
