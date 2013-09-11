@@ -9,9 +9,19 @@ say NX::Deb7->share_dir;
 
 if(prompt('y', "dac cave?", '', ''))
 {
-  say "nx-deb7-setup-cave";
+  say "> nx-deb7-setup-cave";
   NX::Deb7->setup_cave;
 }
 
-say "nx-deb7-setup-root";
+sub run
+{
+  say "% @_";
+  system(@_);
+}
+
+run 'apt-get', 'update';
+run 'dpkg', -i => NX::Deb7->share_dir->file(qw( deb libnx-deb7-perl_0.05-1_all.deb ));
+run 'apt-get', 'install', '-f';
+
+say "> nx-deb7-setup-root";
 NX::Deb7->setup_root;
