@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use NX::Deb7;
+
+# PODNAME: nx-deb7-setup-root
+# ABSTRACT: setup user environment
+# VERSION
+
+NX::Deb7->setup_user;
