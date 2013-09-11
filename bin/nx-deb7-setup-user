@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use NX::Deb7;
+
+NX::Deb7->setup_user;

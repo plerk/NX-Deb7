@@ -1,0 +1,9 @@
+[user]
+	name = Graham Ollis
+	email = perl@wdlabs.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[github]
+	user = plicease

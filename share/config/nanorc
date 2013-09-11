@@ -1,0 +1,14 @@
+set autoindent
+unset backup
+set const
+unset cut
+set multibuffer
+unset noconvert
+unset nofollow
+set nohelp
+set nowrap
+set regexp
+set smooth
+set speller aspell
+set suspend
+set historylog
