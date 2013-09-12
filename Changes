@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.06      2013-09-12 11:48:16 -0400
+  - don't include binary bootstrap in distro
+
 0.05      2013-09-11 15:26:04 -0400
   - spacing fixes
 
